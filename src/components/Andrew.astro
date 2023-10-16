@@ -1,0 +1,158 @@
+<section class="flex flex-col p-3 md:px-0 h-screen md:flex-row justify-center items-center andrew-section">
+  <main class="flex flex-col md:flex-row justify-center items-center md:h-[650px] w-full">
+    <div class="md:h-auto md:w-auto flex flex-col md:justify-center w-full ">
+      <h1
+        class="text-primary
+              text-4xl
+              font-medium
+              [text-wrap:balance]
+              leading-[110%]
+              md:leading-[59.04px]
+              w-[676px]
+              md:w-[400px]
+              md:text-6xl
+              max-w-full
+              andrew_main_text
+              "
+      >
+        Figure Drawing For All
+        <br />
+         It’s Worth
+      </h1>
+      <div
+        class="andrew-bg
+              text-[#0E100F]
+              text-opacity-60
+              text-lg
+              font-semibold
+              leading-10
+              capitalize
+              md:text-3xl
+              mt-1
+              bg-[#FFFCE1]
+              rounded-full
+              w-[50px]
+              h-[40px]
+              "
+      >
+        <div class="andrew-container flex flex-auto justify-center items-center">
+          <span class="text-md md:text-[20px]"> Andrew Loomis</span>
+        </div>
+      </div>
+      <p class="mt-3 md:w-[450px] text-md font-extralight md:text-md andrew-ph [text-wrap:balance]">
+        Esta es una guía clásica que ayuda a artistas de todos los niveles a mejorar sus habilidades en el dibujo de la figura humana, proporcionando instrucciones detalladas sobre anatomía, proporciones y técnicas artísticas clave.
+      </p>
+    </div>
+    <div class="w-full p-2 mt-4 bg-white md:h-full md:w-auto object-cover md:m-5 andrew-cover">
+      <img src="/FDFAIW.jpg" alt="FDFAIW cover" class="w-[300px] h-auto m-auto md:h-full md:w-auto andrew-img">
+    </div>
+  </main>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const ScrollTriggerOptions = {
+    trigger: ".andrew-section",
+    start: "top center",
+    end: "bottom bottom",
+    scrub: 1,
+    toggleActions: "restart none none none",
+  }
+
+  let AnimateTextTimeline = gsap.timeline({defaults: {stagger: 2},scrollTrigger:ScrollTriggerOptions});
+  let AnimateImgTimeline = gsap.timeline({defaults: {stagger: 1},scrollTrigger:ScrollTriggerOptions});
+
+  
+  let mm = gsap.matchMedia()
+  let breakpoint = 768
+
+  function AnimateMain(){
+    return gsap.from(".andrew-section",{
+        scrollTrigger:{
+          trigger: ".andrew-section",
+          pin: true,
+          end: "+=250"
+        }
+      })
+  }
+
+  function AnimateMainText(){
+    return gsap.from(".andrew_main_text",{
+        x:-200,
+        opacity: 0,
+        ease: "power2.out"
+      })
+  }
+
+  function AnimateBackground(){
+    return gsap.from(".andrew-bg", {
+        duration: .4,
+        y: 40,
+        opacity: 0,
+        "border-radius": "20px",
+      })
+  }
+
+  function SizeBackground(isDesktop){
+      return gsap.to(".andrew-bg", {
+          width: isDesktop ? "280px" : "200px",
+      })
+  }
+
+  function AnimateContainer(){
+      return gsap.from(".andrew-container", {
+          duration: .4,
+          x: 300,
+          opacity: 0,
+      })
+  }
+
+  function AnimateParagraph(){
+      return gsap.from(".andrew-ph",{
+          x:-50,
+          opacity: 0,
+          ease: "power2.out"
+      })
+  }
+
+  function AnimateCover(){
+      return gsap.from(".andrew-cover",{
+        duration: 1,
+        height: 0,
+      })
+  }
+
+  function AnimateImg(){
+      return gsap.from(".andrew-img",{
+        x: 1000,
+        duration: 1,
+        opacity: 0,
+      })
+  }
+
+  mm.add({
+      isDesktop: `(min-width: ${breakpoint}px) and (prefers-reduced-motion: no-preference)`,
+      isMobile: `(max-width: ${breakpoint - 1}px) and (prefers-reduced-motion: no-preference)`,
+      
+    },
+    (context) => {
+      let { isDesktop, isMobile } = context.conditions;
+
+      AnimateTextTimeline
+      .add(AnimateMain())
+      .add(AnimateMainText())
+      .add(AnimateBackground())
+      .add(SizeBackground(isDesktop))
+      .add(AnimateContainer())
+      .add(AnimateParagraph());
+
+      AnimateImgTimeline
+      .add(AnimateCover())
+      .add(AnimateImg());
+      return () => {};
+    }
+  );
+</script>

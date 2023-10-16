@@ -1,0 +1,66 @@
+/* Define the animation */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+        color: black;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.book-card{
+    animation: slideInFromRigth 1s both;
+    animation-timeline: view() ;
+    animation-duration: 1s;
+    animation-range: entry 50% cover 50%;
+}
+
+.section-text{
+    animation: slideInFromRight 2s both;
+    animation-timeline: view() ;
+    animation-duration: 1s;
+    animation-range: entry 50% cover 50%;
+}
+
+/* Apply the animation to the h1 element */
+.book-main-text {
+    animation: slideInFromLeft 1s both;
+    animation-timeline: view() ;
+    animation-duration: 1s;
+    animation-range: entry 50% cover 50%;
+    font-size: clamp(75px, 8vw, 240px);
+}
+
+.book-second-text{
+    animation: slideInFromLeft 1s both;
+    animation-timeline: view() ;
+    animation-duration: 1s;
+    animation-range: entry 50% cover 50%;
+    font-size: clamp(50px, 5vw, 150px);
+}
+
+
+.card-details h2{
+    font-size: clamp(20px, 3vw, 30px);
+    line-height: 1.2;
+}
+
+.card-details h3{
+    font-size: clamp(15px, 2vw, 20px);
+    line-height: 1.2;
+}
+

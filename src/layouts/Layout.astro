@@ -1,0 +1,56 @@
+---
+import Navbar from '../components/Navbar.astro';
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#FFFCE1">
+		<title>{title}</title>
+	</head>
+	<body>
+		<Navbar/>
+		<slot/>
+	</body>
+</html>
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;900&display=swap');
+
+	@font-face {
+		font-family: 'Mori', sans-serif;
+		src: url('../assets/PP-Mori/PPMori-Regular.woff2') format('woff2'),
+			url('../assets/PP-Mori/PPMori-SemiBold.woff2') format('woff2');
+	}
+
+	html{
+		background-color: #0E100F;
+		font-family: 'Mori','Poppins', sans-serif;
+		color: #FFFCE1;
+		overflow-x: hidden;
+	}
+	
+	/* body::-webkit-scrollbar {
+  		width: 12px;
+	}
+ 
+	body::-webkit-scrollbar-thumb {
+	background-color: #232323;
+	border-radius: 2px;
+	border: 3px solid transparent;
+  	background-clip: content-box;
+	} */
+	::selection{
+        background-color: #FFFCE1;
+        color:#0E100F;
+    }
+</style>
