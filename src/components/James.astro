@@ -1,4 +1,4 @@
-<section class="flex flex-col p-3 md:px-0 h-screen md:flex-row justify-center items-center james-section">
+<section class="flex flex-col w-full p-3 md:px-0 h-screen md:flex-row justify-center items-center james-section">
     <main class="flex flex-col md:flex-row justify-center items-center md:h-[650px] w-full">
         <div class="md:h-auto md:w-auto flex flex-col md:justify-center w-full">
           <h1
@@ -21,29 +21,32 @@
           </h1>
           <div
             class="james-bg
-                  text-[#0E100F]
-                  text-opacity-60
+                  text-white
+                  text-opacity-70
                   text-lg
                   font-semibold
                   leading-10
                   capitalize
                   md:text-3xl
                   mt-1
-                  bg-[#FFFCE1]
+                  bg-red-600
                   rounded-full
                   w-[50px]
                   h-[40px]
+                  flex
+                  justify-center
+                  items-center
                   "
           >
             <div class="james-container flex justify-center">
               <span class="text-md md:text-[20px]"> James Gurney</span>
             </div>
           </div>
-          <p class="mt-3 md:w-[450px] text-md font-extralight md:text-md james-ph [text-wrap:balance]">
+          <p class="mt-3 w-screen md:w-[450px] text-md font-extralight md:text-md james-ph [text-wrap:balance]">
             Un recurso esencial para los artistas que deseen dominar las complejidades del color y la luz en sus obras.
           </p>
         </div>
-        <div class="w-full p-2 bg-white md:h-full md:w-auto md:m-5 james-cover">
+        <div class="w-screen p-2 bg-white md:h-full md:w-auto md:m-5 james-cover">
           <img src="/L&C.webp" alt="FDFAIW cover" class="w-[300px] h-auto m-auto md:h-full md:w-auto james-img">
         </div>
     </main>
@@ -82,7 +85,7 @@
         tl
         .from(".james_main_text",{
           duration: .4,
-          x:-300,
+          x:-100,
           opacity: 0,
         })
         .from(".james-bg", {
@@ -96,11 +99,11 @@
           })
           .from(".james-container", {
             duration: .5,
-            x: 300,
+            x: 100,
             opacity: 0,
           })
           .from(".james-ph",{
-            x:-300,
+            x:-100,
             opacity: 0,
             ease: "power2.out"
         });
@@ -109,7 +112,7 @@
           duration: 1,
           height: 0,
         }).from(".james-img",{
-          x: 1000,
+          x: 50,
           duration: 1,
           opacity: 0,
         })

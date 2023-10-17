@@ -1,0 +1,6 @@
+#main-section{
+    height: calc(100vh - 86px);
+    min-height: calc(100vh - 86px);
+    justify-content: center;
+    align-items: center;
+}
